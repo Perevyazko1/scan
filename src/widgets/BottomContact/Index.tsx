@@ -1,0 +1,1 @@
+export {DetailBottomContact as BottomContact} from "./ui/BottomContact"

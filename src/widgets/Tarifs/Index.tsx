@@ -1,0 +1,1 @@
+export {DetailTarifs as Tarifs} from "./ui/Tarifs"
