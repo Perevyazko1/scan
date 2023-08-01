@@ -1,0 +1,13 @@
+.PageWrapper{
+    display: flex;
+    gap: 20px;
+    padding: 0 40px;
+}
+
+@media screen and (max-width: 1110px) {
+.PageWrapper{
+    display: flex;
+    gap: 20px;
+    padding: 0;
+}
+}

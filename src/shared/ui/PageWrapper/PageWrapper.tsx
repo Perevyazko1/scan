@@ -1,29 +1,29 @@
 import {memo, ReactNode} from 'react';
 import {classNames, Mods} from "shared/lib/classNames/classNames";
-import cls from "./MainPage.module.scss"
+import cls from "./PageWrapper.module.scss"
 
-interface MainPageProps {
+interface PageWrapperProps {
     className?: string
     children?: ReactNode
 }
 
 
-export const MainPage = memo((props: MainPageProps) => {
+export const PageWrapper = memo((props: PageWrapperProps) => {
     const {
         className,
         children,
         ...otherProps
     } = props
-    
+
     const mods: Mods = {
-        
+
     };
-    
+
     return (
         <div
-            className={classNames(cls.MainPage, mods, [className])}
+            className={classNames(cls.PageWrapper, mods, [className])}
             {...otherProps}
-        >Проект Скан
+        >
             {children}
         </div>
     );
