@@ -1,5 +1,4 @@
 .MainHeader{
-    //height: 620px;
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
@@ -8,16 +7,10 @@
     font: var(--font-header-main);
     max-width: 743px;
     margin: 0 auto;
-    //min-height: 361px;
-    //height: 288px;
-
 }
 .SmallText{
     font: var(--font-small-main);
     max-width: 534px;
-    //min-height: 48px;
-    //height: 48px;
-
 }
 .Button{
     width: 335px;
@@ -27,18 +20,12 @@
 .LeftBlock{
     max-width: 743px ;
     min-height: 361px;
-    //max-height: 420px;
     margin: 0 auto;
 }
 .Picture{
     max-width: 575px;
     min-width: 361px;
     margin: 0 auto;
-
-    //height: 620px;
-    //top: 117px;
-    //left: 751px;
-
 }
 @media screen and (max-width: 748px) {
 .MainHeader{
@@ -62,7 +49,6 @@
 .LeftBlock{
     max-width: 743px ;
     min-height: 361px;
-    //max-height: 420px;
     margin: 0 auto;
 }
 .Picture{
@@ -70,5 +56,4 @@
     min-width: 342px;
     margin: 0 auto;
 }
-
 }
