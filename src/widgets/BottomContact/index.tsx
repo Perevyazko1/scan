@@ -1,1 +1,1 @@
-export {DetailBottomContact as BottomContact} from "./ui/BottomContact"
+export {DetailBottomContact as BottomContact} from './ui/BottomContact';
