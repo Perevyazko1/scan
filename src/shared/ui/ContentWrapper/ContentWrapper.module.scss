@@ -1,8 +1,10 @@
 .ContentWrapper{
-    width: 1320px;
+    max-width: 1440px;
+    padding: 10px;
 }
 
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 748px) {
 .ContentWrapper{
     width: 375px;
+    padding: 10px;
 }}

@@ -14,6 +14,13 @@
     --font-weight-header: 900;
     --font-header-main: var(--font-weight-header) var(--font-size-header) / var(--font-line-height-header) var(--font-header) ;
 
+        // font  header mobile
+    --font-size-header-mobile: 28px;
+    --font-line-height-header-mobile: 33px;
+    --font-weight-header-mobile: 900;
+    --font-header-main-mobile: var(--font-weight-header-mobile) var(--font-size-header-mobile) / var(--font-line-height-header-mobile) var(--font-header) ;
+
+
     --font-small: "Inter", serif;
     // font small
     --font-size-small: 20px;
@@ -21,6 +28,11 @@
     --font-weight-small: 400;
     --font-small-main: var(--font-weight-small) var(--font-size-small)  / var(--font-line-height-small) var(--font-small)  ;
 
+        // font small mobile
+    --font-size-small-mobile: 18px;
+    --font-line-height-small-mobile: 21px;
+    --font-weight-small-mobile: 400;
+    --font-small-main-mobile: var(--font-weight-small-mobile) var(--font-size-small-mobile)  / var(--font-line-height-small-mobile) var(--font-small)  ;
 
 
 }

@@ -7,33 +7,68 @@
 .BigText{
     font: var(--font-header-main);
     max-width: 743px;
-    min-height: 361px;
-    height: 288px;
+    margin: 0 auto;
+    //min-height: 361px;
+    //height: 288px;
 
 }
 .SmallText{
     font: var(--font-small-main);
     max-width: 534px;
-    min-height: 361px;
-    height: 48px;
+    //min-height: 48px;
+    //height: 48px;
 
 }
 .Button{
-    max-width: 335px;
+    width: 335px;
     height: 59px;
 
 }
 .LeftBlock{
     max-width: 743px ;
     min-height: 361px;
-    max-height: 420px;
+    //max-height: 420px;
+    margin: 0 auto;
 }
 .Picture{
     max-width: 575px;
     min-width: 361px;
+    margin: 0 auto;
 
     //height: 620px;
     //top: 117px;
     //left: 751px;
+
+}
+@media screen and (max-width: 748px) {
+.MainHeader{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+.BigText{
+    font: var(--font-header-main-mobile);
+    max-width: 743px;
+
+}
+.SmallText{
+    font: var(--font-small-main-mobile);
+    max-width: 534px;
+}
+.Button{
+    width: 335px;
+    height: 59px;
+}
+.LeftBlock{
+    max-width: 743px ;
+    min-height: 361px;
+    //max-height: 420px;
+    margin: 0 auto;
+}
+.Picture{
+    max-width: 347px;
+    min-width: 342px;
+    margin: 0 auto;
+}
 
 }

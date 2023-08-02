@@ -3,6 +3,7 @@ import {classNames, Mods} from "shared/lib/classNames/classNames";
 import cls from "./MainHeader.module.scss"
 import pictureHeader from "../../../shared/assets/picture/picture-header.svg"
 import {ContentWrapper} from "../../../shared/ui/ContentWrapper/ContentWrapper";
+import {Button} from "../../../shared/ui/Button/Button";
 
 interface MainHeaderProps {
     className?: string
@@ -34,11 +35,9 @@ export const DetailsMainHeader = memo((props: MainHeaderProps) => {
                     <div className={cls.SmallText}>
                         Комплексный анализ публикаций, получение данных в формате PDF на электронную почту.
                     </div>
-                    {/*<Button className={cls.Button}>Запросить данные</Button>*/}
+                    <Button className={cls.Button}>Запросить данные</Button>
                 </div>
-                <div className={cls.Picture}>
-                    <img  src={pictureHeader}/>
-                </div>
+                    <img className={cls.Picture} src={pictureHeader}/>
 
                 {children}
             </div>
