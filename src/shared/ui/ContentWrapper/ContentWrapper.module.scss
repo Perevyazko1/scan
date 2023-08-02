@@ -2,7 +2,12 @@
     max-width: 1440px;
     padding: 10px;
 }
-
+@media screen and (max-width: 1120px) {
+.ContentWrapper{
+    width: 774px;
+    padding: 10px;
+    overflow: hidden;
+}}
 @media screen and (max-width: 748px) {
 .ContentWrapper{
     width: 375px;

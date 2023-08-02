@@ -1,3 +1,46 @@
 .AboutUs{
+    //width: 1320px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.HeaderBlock{
+    width: 1346px;
+    //height: 349px;
+}
+.HeaderAboutUs{
+    font: var(--font-header-main);
+}
+
+.Slider{
+
+}
+
+.PictureBlock{
+    max-width: 1307px;
+    margin: 0 auto;
+}
+@media screen and (max-width: 748px) {
+.AboutUs{
+    width: 375px;
+    overflow: hidden;
+    margin: 0 auto;
+
+}
+
+.HeaderBlock{
+    width: 347px;
+    //height: 349px;
+}
+.HeaderAboutUs{
+    font: var(--font-header-main-mobile);
+}
+
+.Slider{
+
+}
+
+.PictureBlock{
+    width: 891px;
+}
 
 }

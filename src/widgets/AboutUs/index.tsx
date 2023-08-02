@@ -1,0 +1,1 @@
+export {DetailsAboutUs as AboutUs} from "./ui/AboutUs"

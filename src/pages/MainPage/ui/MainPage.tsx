@@ -2,6 +2,7 @@ import {memo, ReactNode} from 'react';
 import {classNames, Mods} from "shared/lib/classNames/classNames";
 import cls from "./MainPage.module.scss"
 import {MainHeader} from "../../../features/MainHeader";
+import {AboutUs} from "../../../widgets/AboutUs";
 
 interface MainPageProps {
     className?: string
@@ -26,6 +27,7 @@ const MainPage = memo((props: MainPageProps) => {
             {...otherProps}
         >
             <MainHeader/>
+            <AboutUs/>
         </div>
     );
 });
