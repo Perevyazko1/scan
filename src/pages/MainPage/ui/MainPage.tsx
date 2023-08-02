@@ -1,6 +1,7 @@
 import {memo, ReactNode} from 'react';
 import {classNames, Mods} from "shared/lib/classNames/classNames";
 import cls from "./MainPage.module.scss"
+import {MainHeader} from "../../../features/MainHeader";
 
 interface MainPageProps {
     className?: string
@@ -8,13 +9,13 @@ interface MainPageProps {
 }
 
 
-export const MainPage = memo((props: MainPageProps) => {
+const MainPage = memo((props: MainPageProps) => {
     const {
         className,
         children,
         ...otherProps
     } = props
-    
+
     const mods: Mods = {
         
     };
@@ -23,8 +24,9 @@ export const MainPage = memo((props: MainPageProps) => {
         <div
             className={classNames(cls.MainPage, mods, [className])}
             {...otherProps}
-        >Главная страница проекта
-            {children}
+        >
+            <MainHeader/>
         </div>
     );
 });
+export default MainPage

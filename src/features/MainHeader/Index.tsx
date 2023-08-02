@@ -1,1 +1,0 @@
-export {DetailMainHeader as MainHeader} from "./ui/MainHeader"

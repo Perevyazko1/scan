@@ -1,6 +1,26 @@
 @import "reset";
+@import "fonts";
+
 
 :root{
     --app-background: #FFFFFF;
+    --app-color-button: #5970FF;
+
+
+    --font-header: "Ferry", serif;
+    // font  header
+    --font-size-header: 60px;
+    --font-line-height-header: 72px;
+    --font-weight-header: 900;
+    --font-header-main: var(--font-weight-header) var(--font-size-header) / var(--font-line-height-header) var(--font-header) ;
+
+    --font-small: "Inter", serif;
+    // font small
+    --font-size-small: 20px;
+    --font-line-height-small: 24px;
+    --font-weight-small: 400;
+    --font-small-main: var(--font-weight-small) var(--font-size-small)  / var(--font-line-height-small) var(--font-small)  ;
+
+
 
 }

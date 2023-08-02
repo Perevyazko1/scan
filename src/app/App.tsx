@@ -1,9 +1,10 @@
 import React from 'react';
 import {Route, Routes} from "react-router-dom";
-import {MainPage} from "pages/MainPage/ui/MainPage";
+
 import {WithWrapper} from "shared/ui/WithWrapper/WithWrapper";
 import {useWindowWidth} from "shared/lib/hook/useWindowWidth/useWindowWidth";
 import {PageWrapper} from "../shared/ui/PageWrapper/PageWrapper";
+import {MainPage} from "../pages/MainPage";
 
 function App() {
     const pageWidth = useWindowWidth();
