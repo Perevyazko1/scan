@@ -3,6 +3,7 @@ import {classNames, Mods} from "shared/lib/classNames/classNames";
 import cls from "./MainPage.module.scss"
 import {MainHeader} from "../../../features/MainHeader";
 import {AboutUs} from "../../../widgets/AboutUs";
+import {BottomContact} from "../../../widgets/BottomContact";
 
 interface MainPageProps {
     className?: string
@@ -28,6 +29,7 @@ const MainPage = memo((props: MainPageProps) => {
         >
             <MainHeader/>
             <AboutUs/>
+            <BottomContact/>
         </div>
     );
 });

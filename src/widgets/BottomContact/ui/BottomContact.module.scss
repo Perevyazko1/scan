@@ -1,3 +1,26 @@
 .BottomContact{
+    background: var(--app-color-bottom);
+    height: 137px;
+    position: relative;
+}
+.Logo{
+    width: 141px;
+    margin-left: 10px;
+}
+.Contact{
+    font: var(--font-bottom-main);
+    color: #FFFFFF;
+    position: absolute;
+    right: 0;
+    bottom: 60px;
+    width: 199px;
+}
+.Copyright{
+    font: var(--font-bottom-main);
+    color: #FFFFFF;
+    position: absolute;
+    right: 0;
+    bottom: 25px;
+    width: 199px;
 
 }
