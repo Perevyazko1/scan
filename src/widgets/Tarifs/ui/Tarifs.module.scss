@@ -1,24 +1,78 @@
 .Tarifs{
-
+    width: 1320px;
+    height: 644px;
+    position: relative;
 }
 .HeaderTarifs{
     font: var(--font-header-main);
+
+
 }
 .BlockTarifs{
 
 }
 .UnitTarif{
+    width: 415px;
+    height: 540px;
+    border-radius: 5px;
+    border: solid #FFB64F;
 
 }
 .HeaderTarif{
+    font: var(--font-header-tarif);
+
 
 }
+.HeaderTarifBlock{
+    background: #FFB64F;
+    height: 65px;
+    padding: 20px 20px;
+}
+.Subtitle{
+    font: var(--font-small-main-mobile);
+}
 .PriceTarif{
+    font: var(--font-header-tarif);
+    position: absolute;
+    top: 130px;
+    left: 20px;
+
+}
+.OldPrice{
+    font: var(--font-header-tarif);
+    position: absolute;
+    top: 130px;
+    left: 130px;
+    color: #909090;
+
+
+}
+.CreditPrice{
+    font: var(--font-small-main-mobile);
+    position: absolute;
+    top: 175px;
+    left: 20px;
 
 }
 .PackageTarif{
+    font: var(--font-small-main-mobile);
+    position: absolute;
+    top: 200px;
+    left: 20px;
 
 }
 .ButtonTarif{
+    position: absolute;
+    bottom: 160px;
+    left: 20px;
+    width: 355px;
+    height: 59px;
+
+}
+.Lamp{
+    position: absolute;
+    width: 92px;
+    top: 5px;
+    left: 315px;
 
 }

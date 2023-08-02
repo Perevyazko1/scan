@@ -41,5 +41,11 @@
     --font-weight-bottom: 400;
     --font-bottom-main: var(--font-weight-bottom) var(--font-size-bottom)  / var(--font-line-height-bottom) var(--font-main)  ;
 
+            // font header tarif
+    --font-size-tarif: 30px;
+    --font-line-height-tarif: 36px;
+    --font-weight-tarif: 500;
+    --font-header-tarif: var(--font-weight-tarif) var(--font-size-tarif)  / var(--font-line-height-tarif) var(--font-main)  ;
+
 
 }

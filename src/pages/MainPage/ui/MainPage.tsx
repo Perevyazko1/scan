@@ -4,6 +4,7 @@ import cls from "./MainPage.module.scss"
 import {MainHeader} from "../../../features/MainHeader";
 import {AboutUs} from "../../../widgets/AboutUs";
 import {BottomContact} from "../../../widgets/BottomContact";
+import {Tarifs} from "../../../widgets/Tarifs";
 
 interface MainPageProps {
     className?: string
@@ -29,6 +30,7 @@ const MainPage = memo((props: MainPageProps) => {
         >
             <MainHeader/>
             <AboutUs/>
+            <Tarifs/>
             <BottomContact/>
         </div>
     );
