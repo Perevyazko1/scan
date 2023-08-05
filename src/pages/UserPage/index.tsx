@@ -1,0 +1,1 @@
+export {DetailsUserComponent as UserPage} from "./ui/UserPage.async"

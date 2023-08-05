@@ -1,0 +1,1 @@
+export {DetailsNotFoundComponent as NotFoundPage} from './ui/NotFoundPage.async'

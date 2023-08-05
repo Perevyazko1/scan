@@ -7,6 +7,7 @@ import {PageWrapper} from "../shared/ui/PageWrapper/PageWrapper";
 import {MainPage} from "../pages/MainPage";
 import {TarifsPage} from "../pages/TarifsPage";
 import {FAQPage} from "../pages/FAQPage";
+import {NavBar} from "../features/NavBar";
 
 function App() {
     const pageWidth = useWindowWidth();
@@ -21,6 +22,7 @@ function App() {
 
     const desktopView = (
         <WithWrapper>
+            <NavBar/>
             <PageWrapper>
                 {contentBlock}
             </PageWrapper>
@@ -29,6 +31,7 @@ function App() {
 
     const mobileView = (
         <WithWrapper>
+            <NavBar/>
             <PageWrapper>
                 {contentBlock}
             </PageWrapper>

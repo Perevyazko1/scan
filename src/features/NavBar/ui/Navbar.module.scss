@@ -1,3 +1,149 @@
 .Navbar{
+    height: 95px;
+    display: flex;
+}
+.ButtonGroup{
+    display: flex;
+    margin: 35px 210px;
+}
+.ButtonLink{
+    text-decoration: none !important;
+    font: var(--font-small-main-mobile);
+    color: black;
+    margin: 0 50px;
+}
+.Menu{
+    display: none;
+}
+.Cross{
+    display: none;
+}
+.LogoDesktop{
+    display: initial;
+}
 
+.SignButton{
+    width: 70px;
+    height: 30px;
+    color: black;
+    font: var(--font-small-main-mobile);
+    background: var(--app-color-bottom);
+}
+.SignGroup{
+    display: flex;
+    width: 100px;
+}
+.NavbarOpen{
+
+}
+
+@media screen and (max-width: 1200px){
+
+.Navbar{
+    //background: var(--app-color-bottom) ;
+    height: 95px;
+    display: flex;
+}
+.ButtonGroup{
+    //display: flex;
+    //margin: 35px 210px;
+    display: none;
+}
+
+.ButtonLink{
+    background: none;
+    color: black;
+}
+.Menu{
+    display: initial;
+    width: 30px;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+.Cross{
+    display: none;
+}
+
+.LogoDesktop{
+    //display: none;
+}
+.LogoMobile{
+
+}
+.SignButton{
+    width: 70px;
+    height: 30px;
+    color: black;
+    font: var(--font-small-main-mobile);
+    background: var(--app-color-bottom);
+}
+.SignGroup{
+    display: none;
+}
+.NavbarOpen{
+    background: var(--app-color-bottom);
+    padding: 1px;
+    position: fixed;
+    width: 100%;
+    margin-left: -15px;
+    .SignGroup{
+    display: flex;
+    width: 300px;
+    margin: 20px auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    font: var(--font-small-main-mobile);
+    }
+    .SignButton{
+    width: 295px;
+    height: 51px;
+    color: black;
+    font: var(--font-small-main-mobile);
+    background: #7CE3E1;
+}
+
+
+    .Cross{
+    display: initial;
+    width: 30px;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+
+    }
+    .Menu{
+        display: none;
+    }
+    .LogoMobile{
+        position: absolute;
+        left: 20px;
+        top: -20px;
+        width: 111px;
+
+}
+
+    .LogoDesktop{
+        display: none;
+}
+    .ButtonGroup{
+        display: flex;
+        flex-wrap: wrap;
+        width: 100px;
+        height: 150px;
+        margin: 95px auto;
+        justify-content: center;
+        //display: none;
+}
+    .ButtonLink{
+        background: none;
+        color: var(--app-background);
+        margin: 20px 0;
+
+
+}
+
+
+
+}
 }
