@@ -32,13 +32,13 @@ export const DetailTarifs = memo((props: TarifsProps) => {
                 className={classNames(cls.Tarifs, mods, [className])}
                 {...otherProps}
             >
-                <div className={cls.HeaderTarifs}></div>
+                <div className={cls.HeaderTarifs}>Наши тарифы</div>
                 <div className={cls.BlockTarifs}>
                     <div className={cls.UnitTarif}>
                         <div className={cls.HeaderTarifBlockBeginner}>
                             <div className={cls.HeaderTarif}>Beginner</div>
                             <div className={cls.Subtitle}>Для небольшого исследования</div>
-                            <img src={lamp} className={cls.Lamp}/>
+                            <img src={lamp} className={cls.IconTarif}/>
                         </div>
                         <span className={cls.PriceTarif}>799 ₽</span><span className={cls.OldPrice}><s>1 200 ₽</s></span>
                         <div className={cls.CreditPrice}>или 150 ₽/мес. при рассрочке на 24 мес.</div>
@@ -56,7 +56,7 @@ export const DetailTarifs = memo((props: TarifsProps) => {
                         <div className={cls.HeaderTarifBlockPro}>
                             <div className={cls.HeaderTarif}>PRO</div>
                             <div className={cls.Subtitle}>Для корпоративных клиентов</div>
-                            <img src={target} className={cls.Lamp}/>
+                            <img src={target} className={cls.IconTarif}/>
                         </div>
                         <span className={cls.PriceTarif}>1 299 ₽</span><span className={cls.OldPrice}><s>2 600 ₽</s></span>
                         <div className={cls.CreditPrice}>или 279 ₽/мес. при рассрочке на 24 мес.</div>
@@ -74,7 +74,7 @@ export const DetailTarifs = memo((props: TarifsProps) => {
                         <div className={cls.HeaderTarifBlockBusiness}>
                             <div className={cls.HeaderTarif}>PRO</div>
                             <div className={cls.Subtitle}>Для HR и фрилансеров</div>
-                            <img src={notebook} className={cls.Lamp}/>
+                            <img src={notebook} className={cls.IconTarif}/>
                         </div>
                         <span className={cls.PriceTarif}>2 379 ₽</span><span className={cls.OldPrice}><s>3 700 ₽</s></span>
                         <div className={cls.CreditPrice}>или 279 ₽/мес. при рассрочке на 24 мес.</div>

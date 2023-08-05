@@ -5,6 +5,8 @@ import {WithWrapper} from "shared/ui/WithWrapper/WithWrapper";
 import {useWindowWidth} from "shared/lib/hook/useWindowWidth/useWindowWidth";
 import {PageWrapper} from "../shared/ui/PageWrapper/PageWrapper";
 import {MainPage} from "../pages/MainPage";
+import {TarifsPage} from "../pages/TarifsPage";
+import {FAQPage} from "../pages/FAQPage";
 
 function App() {
     const pageWidth = useWindowWidth();
@@ -12,6 +14,8 @@ function App() {
     const contentBlock = (
         <Routes>
             <Route path="/" element={<MainPage/>}/>
+            <Route path="/tarifs" element={<TarifsPage/>}/>
+            <Route path="/faq" element={<FAQPage/>}/>
         </Routes>
     )
 

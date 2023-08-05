@@ -1,0 +1,1 @@
+export {DetailsFaqPage as FAQPage} from "./ui/FAQPage"

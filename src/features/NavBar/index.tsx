@@ -1,0 +1,1 @@
+export {DetailsNavbar as NavBar} from "./ui/Navbar"
