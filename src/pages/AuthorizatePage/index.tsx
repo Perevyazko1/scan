@@ -1,0 +1,1 @@
+export {DetailsAuthorizationPage as AuthorizationPage} from "./ui/AuthorizationPage.async"
