@@ -69,7 +69,9 @@ export const DetailsNavbar = memo((props: NavbarProps) => {
 
                 <div className={cls.SignGroup}>
                     <p>Зарегистрироваться</p>
-                    <Button className={cls.SignButton}>Войти</Button>
+                    <Link to={"http://localhost:3000/authorize"}>
+                        <Button className={cls.SignButton} >Войти</Button>
+                    </Link>
                 </div>
                 <img src={cross} className={cls.Cross} onClick={handleToggleNavbar}/>
                 <img src={menu} className={cls.Menu} onClick={handleToggleNavbar}/>

@@ -8,6 +8,8 @@ import {MainPage} from "../pages/MainPage";
 import {TarifsPage} from "../pages/TarifsPage";
 import {FAQPage} from "../pages/FAQPage";
 import {NavBar} from "../features/NavBar";
+import {AuthorizationPage} from "../pages/AuthorizatePage";
+import {BottomContact} from "../widgets/BottomContact";
 
 function App() {
     const pageWidth = useWindowWidth();
@@ -17,6 +19,7 @@ function App() {
             <Route path="/" element={<MainPage/>}/>
             <Route path="/tarifs" element={<TarifsPage/>}/>
             <Route path="/faq" element={<FAQPage/>}/>
+            <Route path="/authorize" element={<AuthorizationPage/>}/>
         </Routes>
     )
 
@@ -26,6 +29,7 @@ function App() {
             <PageWrapper>
                 {contentBlock}
             </PageWrapper>
+            <BottomContact/>
         </WithWrapper>
     )
 
@@ -35,6 +39,7 @@ function App() {
             <PageWrapper>
                 {contentBlock}
             </PageWrapper>
+            <BottomContact/>
         </WithWrapper>
     )
 

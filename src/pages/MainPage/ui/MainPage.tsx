@@ -31,7 +31,7 @@ const MainPage = memo((props: MainPageProps) => {
             <MainHeader/>
             <AboutUs/>
             <Tarifs/>
-            <BottomContact/>
+            {/*<BottomContact/>*/}
         </div>
     );
 });
