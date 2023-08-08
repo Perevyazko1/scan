@@ -2,6 +2,22 @@
     height: 95px;
     display: flex;
 }
+.Limits{
+    width: 210px;
+    height: 65px;
+    margin: auto;
+    background: #D9D9D9;
+    border-radius: 5px;
+    padding: 5px;
+    font: var(--font-bottom-main);
+}
+.RowCompanyLimit{
+    margin: 10px;
+}
+.CompanyLimit{
+    color: #8AC540;
+
+}
 .ButtonGroup{
     display: flex;
     margin: 35px 210px;
@@ -31,7 +47,7 @@
 }
 .SignGroup{
     display: flex;
-    width: 100px;
+    //width: 100px;
 }
 .NavbarOpen{
 

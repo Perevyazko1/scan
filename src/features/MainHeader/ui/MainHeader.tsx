@@ -1,5 +1,6 @@
 import {memo, ReactNode} from 'react';
 import {classNames, Mods} from "shared/lib/classNames/classNames";
+import axios from 'axios';
 import cls from "./MainHeader.module.scss"
 import pictureHeader from "../../../shared/assets/picture/picture-header.svg"
 import {ContentWrapper} from "../../../shared/ui/ContentWrapper/ContentWrapper";
@@ -12,6 +13,7 @@ interface MainHeaderProps {
 
 
 export const DetailsMainHeader = memo((props: MainHeaderProps) => {
+
     const {
         className,
         children,

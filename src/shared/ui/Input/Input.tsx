@@ -20,11 +20,11 @@ export const Input = memo((props: InputProps) => {
     };
 
     return (
-        <div
+        <input
             className={classNames(cls.Input, mods, [className])}
             {...otherProps}
         >
             {children}
-        </div>
+        </input>
     );
 });

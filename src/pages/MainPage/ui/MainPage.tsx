@@ -19,6 +19,9 @@ const MainPage = memo((props: MainPageProps) => {
         ...otherProps
     } = props
 
+
+
+
     const mods: Mods = {
         
     };

@@ -1,5 +1,6 @@
-import {memo, ReactNode} from 'react';
+import {memo, ReactNode, useState} from 'react';
 import {classNames, Mods} from "shared/lib/classNames/classNames";
+import axios from 'axios';
 import cls from "./AuthorizationPage.module.scss"
 import {Button} from "../../../shared/ui/Button/Button";
 import {Input} from "../../../shared/ui/Input/Input";
@@ -15,6 +16,39 @@ interface AuthorizatePageProps {
 
 
 const AuthorizationPage = memo((props: AuthorizatePageProps) => {
+
+    const [login, setLogin] = useState('');
+  const [password, setPassword] = useState('');
+
+  const onLogin = async (event: { preventDefault: () => void; }) => {
+    event.preventDefault();
+
+    try {
+        const dataUser = {
+          login: login,
+          password: password
+        };
+        const headers = {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        };
+
+        await axios.post('https://gateway.scan-interfax.ru/api/v1/account/login', dataUser, { headers })
+          .then(response => {
+            console.log(response.data);
+            const accessToken = response.data.accessToken
+            localStorage.setItem('accessToken', accessToken);
+          })
+          .catch(error => {
+            console.error(error);
+          });
+        ;
+
+
+    } catch (error) {
+    }
+  };
+
     const {
         className,
         children,
@@ -38,11 +72,12 @@ const AuthorizationPage = memo((props: AuthorizatePageProps) => {
                 <span className={cls.SignIn}>Войти</span>
                 <span className={cls.SignUp}>Зарегистрироваться</span>
                 <p>Логин или номер телефона:</p>
-                <Input/>
+                <Input className={cls.Input} onChange={(event) => setLogin(event.target.value)} />
                 <p>Пароль</p>
-                <Input/>
-                <Button className={cls.Button}>Войти</Button>
-                <p className={cls.RestorePassword}>Восстановить пароль</p>
+                <Input className={cls.Input} type="password" onChange={(event) => setPassword(event.target.value)} />
+                <div>
+                  <Button className={cls.Button} onClick={onLogin}>Войти</Button>
+                </div>                <p className={cls.RestorePassword}>Восстановить пароль</p>
                 <p>Войти через:</p>
                 <span>
                     <img src={google} className={cls.IconBrand}/>

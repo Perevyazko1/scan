@@ -11,6 +11,7 @@ import logoDesktop from "../../../shared/assets/icons/logo-desktop.svg"
 import logoMobile from "../../../shared/assets/icons/logo.svg"
 import menu from "../../../shared/assets/icons/menu-navbar.svg"
 import cross from "../../../shared/assets/icons/cross-mobile.svg"
+import axios from "axios";
 
 interface NavbarProps {
     className?: string
@@ -19,6 +20,27 @@ interface NavbarProps {
 
 
 export const DetailsNavbar = memo((props: NavbarProps) => {
+
+        const accessToken = localStorage.getItem('accessToken');
+        const [usedCompanyCount, setUsedCompanyCount] = useState('0');
+        const [companyLimit, setCompanyLimit] = useState('');
+
+
+     axios.get('https://gateway.scan-interfax.ru/api/v1/account/info', {
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    })
+      .then(response => {
+          setUsedCompanyCount(response.data.eventFiltersInfo.usedCompanyCount)
+          setCompanyLimit(response.data.eventFiltersInfo.companyLimit)
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+
+
     const {
         className,
         children,
@@ -68,10 +90,15 @@ export const DetailsNavbar = memo((props: NavbarProps) => {
                 {linkComponent}
 
                 <div className={cls.SignGroup}>
-                    <p>Зарегистрироваться</p>
-                    <Link to={"http://localhost:3000/authorize"}>
-                        <Button className={cls.SignButton} >Войти</Button>
-                    </Link>
+                    {/*<p>Зарегистрироваться</p>*/}
+                    <div className={cls.Limits}>
+                        <div className={cls.RowCompanyLimit}>Использовано компаний : {usedCompanyCount}</div>
+                        <div className={cls.RowCompanyLimit}>Лимит по компаниям : <span className={cls.CompanyLimit}>{companyLimit}</span></div>
+                    </div>
+
+                    {/*<Link to={"http://localhost:3000/authorize"}>*/}
+                    {/*    <Button className={cls.SignButton} >Войти</Button>*/}
+                    {/*</Link>*/}
                 </div>
                 <img src={cross} className={cls.Cross} onClick={handleToggleNavbar}/>
                 <img src={menu} className={cls.Menu} onClick={handleToggleNavbar}/>
