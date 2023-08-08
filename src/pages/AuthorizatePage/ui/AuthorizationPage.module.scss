@@ -1,3 +1,112 @@
 .AuthorizatePage{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+
+
+
+}
+.Header{
+    font: var(--font-header-authorize-main);
+    max-width: 817px;
+}
+.ContainerForm{
+    //width: 429px;
+    height: 523px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+.SignIn{
+    font: var(--font-small-main);
+    color: var(--app-color-bottom);
+    margin: 20px;
+}
+.SignUp{
+    font: var(--font-small-main);
+    color:  #C7C7C7;
+    margin: 20px;
+
+;
+}
+p{
+    font: var(--font-small-main);
+    color: #949494;
+;
+}
+.Button{
+    width: 379px;
+    height: 59px;
+    margin: 20px auto;
+
+}
+.RestorePassword{
+    color: var(--app-color-button);
+    text-decoration: underline;
+}
+.IconBrand{
+    width: 96px;
+    //height: 31px;
+    margin-right: 5px;
+}
+.imageAuth{
+    width: 321px;
+    margin: -330px 0 0 160px;}
+@media screen and (max-width: 1315px){
+.AuthorizatePage{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 735px;
+
+}
+.Header{
+    font: var(--font-header-authorize-main);
+    max-width: 817px;
+}
+.ContainerForm{
+    //width: 429px;
+    height: 523px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    margin: 40px auto;
+}
+.SignIn{
+    font: var(--font-small-main);
+    color: var(--app-color-bottom);
+    margin: 20px;
+}
+.SignUp{
+    font: var(--font-small-main);
+    color:  #C7C7C7;
+    margin: 20px;
+
+;
+}
+p{
+    font: var(--font-small-main);
+    color: #949494;
+;
+}
+.Button{
+    width: 379px;
+    height: 59px;
+    margin: 20px auto;
+
+}
+.RestorePassword{
+    color: var(--app-color-button);
+    text-decoration: underline;
+}
+.IconBrand{
+    width: 96px;
+    //height: 31px;
+    margin-right: 5px;
+}
+.imageAuth{
+    width: 321px;
+    margin: 10px auto;
+}
 
 }

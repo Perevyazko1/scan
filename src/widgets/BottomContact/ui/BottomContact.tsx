@@ -22,7 +22,6 @@ export const DetailBottomContact = memo((props: BottomContactProps) => {
     };
 
     return (
-        <ContentWrapper>
             <footer
                 className={classNames(cls.BottomContact, mods, [className])}
                 {...otherProps}
@@ -36,6 +35,5 @@ export const DetailBottomContact = memo((props: BottomContactProps) => {
                 </div>
                 {children}
             </footer>
-        </ContentWrapper>
     );
 });

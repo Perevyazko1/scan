@@ -16,6 +16,13 @@
     --font-weight-header: 900;
     --font-header-main: var(--font-weight-header) var(--font-size-header) / var(--font-line-height-header) var(--font-header) ;
 
+        // font  header authorize
+    --font-size-header-authorize: 40px;
+    --font-line-height-header-authorize: 48px;
+    --font-weight-header-authorize: 900;
+    --font-header-authorize-main: var(--font-weight-header-authorize) var(--font-size-header-authorize) / var(--font-line-height-header-authorize) var(--font-header) ;
+
+
     // font  header mobile
     --font-size-header-mobile: 28px;
     --font-line-height-header-mobile: 33px;
