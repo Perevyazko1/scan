@@ -1,1 +1,1 @@
-export {DetailsTarifsPage as TarifsPage} from "./ui/TarifsPage"
+export {DetailsTarifsComponent as TarifsPage} from "./ui/TarifsPage.async"

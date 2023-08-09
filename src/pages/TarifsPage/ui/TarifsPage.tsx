@@ -8,7 +8,7 @@ interface TarifsPageProps {
 }
 
 
-export const DetailsTarifsPage = memo((props: TarifsPageProps) => {
+ const TarifsPage = memo((props: TarifsPageProps) => {
     const {
         className,
         children,
@@ -28,3 +28,4 @@ export const DetailsTarifsPage = memo((props: TarifsPageProps) => {
         </div>
     );
 });
+export default TarifsPage
