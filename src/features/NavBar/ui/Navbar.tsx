@@ -1,4 +1,4 @@
-import {memo, ReactNode, useState} from 'react';
+import {memo, ReactNode, useState, useEffect} from 'react';
 import {classNames, Mods} from "shared/lib/classNames/classNames";
 import cls from "./Navbar.module.scss"
 import {ContentWrapper} from "../../../shared/ui/ContentWrapper/ContentWrapper";
@@ -24,6 +24,17 @@ export const DetailsNavbar = memo((props: NavbarProps) => {
         const accessToken = localStorage.getItem('accessToken');
         const [usedCompanyCount, setUsedCompanyCount] = useState('0');
         const [companyLimit, setCompanyLimit] = useState('');
+        const [isauthorized, setAuthorized] =useState<string>("")
+        const localStorageСlear = () => {
+          localStorage.clear()
+        }
+
+    useEffect(() => {
+        const storedData = localStorage.getItem('accessToken');
+        setAuthorized(storedData || '')
+    },[])
+
+
 
 
      axios.get('https://gateway.scan-interfax.ru/api/v1/account/info', {
@@ -90,15 +101,25 @@ export const DetailsNavbar = memo((props: NavbarProps) => {
                 {linkComponent}
 
                 <div className={cls.SignGroup}>
-                    {/*<p>Зарегистрироваться</p>*/}
+                    {isauthorized? (<div></div>):(<p>Зарегистрироваться</p>)}
+                    {isauthorized? (
                     <div className={cls.Limits}>
-                        <div className={cls.RowCompanyLimit}>Использовано компаний : {usedCompanyCount}</div>
-                        <div className={cls.RowCompanyLimit}>Лимит по компаниям : <span className={cls.CompanyLimit}>{companyLimit}</span></div>
+                        <div className={cls.RowCompanyLimit}>
+                            Использовано компаний : {usedCompanyCount}
+                        </div>
+                        <div className={cls.RowCompanyLimit}>
+                            Лимит по компаниям :
+                            <span className={cls.CompanyLimit}>{companyLimit}</span>
+                        </div>
                     </div>
+                    ):(<div></div>)}
+                        {isauthorized? (<Button className={cls.SignButton} onClick={localStorageСlear}>Выйти</Button>):
+                            (
+                        <Link to={"http://localhost:3000/authorize"}>
+                                <Button className={cls.SignButton} >Войти</Button>
+                        </Link>
 
-                    {/*<Link to={"http://localhost:3000/authorize"}>*/}
-                    {/*    <Button className={cls.SignButton} >Войти</Button>*/}
-                    {/*</Link>*/}
+                            )}
                 </div>
                 <img src={cross} className={cls.Cross} onClick={handleToggleNavbar}/>
                 <img src={menu} className={cls.Menu} onClick={handleToggleNavbar}/>

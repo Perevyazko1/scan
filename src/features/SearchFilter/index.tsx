@@ -1,0 +1,1 @@
+export {DetailsSearchFilter as SearchFilter} from "./ui/SearchFilter"
