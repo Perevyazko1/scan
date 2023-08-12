@@ -5,7 +5,7 @@
     height: 543px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
-    margin: 0 20px 0 0;
+    margin: 0 20px 20px 0;
     padding: 20px 0 20px 20px;
 }
 p{
@@ -38,4 +38,48 @@ p{
 .SubtitleButton{
     font: var(--font-small-main-mobile);
     margin: 10px 0 0 60px;
+}
+@media screen and (max-width: 1200px){
+
+    .SearchFilter{
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    height: 543px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    //margin: 0 auto;
+    padding: 20px 0 20px 20px;
+}
+p{
+    font: var(--font-small-main-mobile);
+    margin: 20px 10px 0;
+}
+.UnitCheckbox{
+    font: var(--font-small-main-mobile);
+    margin: 10px 0 10px 0;
+
+}
+.ContainerCheckBox{
+    display: none;
+}
+.InputCheckbox{
+    height: auto !important;
+}
+.ContainerInput{
+    width: 90%;
+}
+.DoubleInput{
+    width: 160px;
+}
+.Button{
+    width: 305px;
+    height: 60px;
+    margin: 125px 0 0 60px;
+}
+.SubtitleButton{
+    font: var(--font-small-main-mobile);
+    margin: 10px 0 0 60px;
+}
+
 }
