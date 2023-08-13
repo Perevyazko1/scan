@@ -1,0 +1,1 @@
+export {SearchResultsPageAsync as SearchResultsPage} from "./ui/SearchResultsPage.async"
