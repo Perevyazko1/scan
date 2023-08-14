@@ -31,7 +31,7 @@ interface SearchResultsPageProps {
                 <div className={cls.Subtitle}>Поиск может занять некоторое время, просим сохранять терпение.</div>
             </div>
             <img src={pictureTarget} className={cls.Picture}/>
-            <div>
+            <div className={cls.ContainerResult}>
                <div className={cls.HeaderResult}>Общая сводка</div>
                 <div className={cls.SubtitleResult}>Найдено 4 221 вариантов</div>
                 <div className={cls.Period}></div>
