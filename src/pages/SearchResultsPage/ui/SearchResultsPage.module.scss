@@ -1,3 +1,62 @@
 .SearchResultsPage{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.Header{
+    font: var(--font-header-authorize-main);
+
+}
+.Subtitle{
+    font: var(--font-small-main);
+    margin: 10px 0;
+
+
+}
+.ContainerHeader{
+    max-width: 480px;
+}
+.Picture{
+    width: 552px;
+    height: 369px;
+    margin: 0 0 0 220px
+
+}
+.HeaderResult{
+    font: var(--font-header-main-mobile);
+    margin: 30px 0;
+
+}
+.SubtitleResult{
+    font: var(--font-small-main-mobile);
+    margin: 10px 0;
+
+}
+.Period{
+    width: 1346px;
+    height: 168px;
+    border-radius: 5px;
+    border: solid 2px #029491;;
+
+
+}
+.ContainerDocument{
+    width: 100%;
+}
+.ContainerListDocument {
+    width: 100%;
+}
+.UnitDocument{
+    width: 641px;
+    height: 694px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+
+}
+.Button{
+    width: 305px;
+    height: 59px;
+    margin: 30px auto;
+    display: block;
 
 }

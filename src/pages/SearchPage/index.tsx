@@ -1,1 +1,1 @@
-import {DetailsSearchPageComponent as PageComponent} from "./ui/SearchPage.async";
+export {DetailsSearchPageComponent as SearchPage} from "./ui/SearchPage.async";

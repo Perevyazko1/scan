@@ -10,7 +10,8 @@ import {FAQPage} from "../pages/FAQPage";
 import {NavBar} from "../features/NavBar";
 import {AuthorizationPage} from "../pages/AuthorizatePage";
 import {BottomContact} from "../widgets/BottomContact";
-import SearchPage from "../pages/SearchPage/ui/SearchPage";
+import {SearchPage} from "../pages/SearchPage";
+import {SearchResultsPage} from "../pages/SearchResultsPage";
 
 function App() {
     const pageWidth = useWindowWidth();
@@ -22,6 +23,7 @@ function App() {
             <Route path="/faq" element={<FAQPage/>}/>
             <Route path="/authorize" element={<AuthorizationPage/>}/>
             <Route path="/search" element={<SearchPage/>}/>
+            <Route path="/result" element={<SearchResultsPage/>}/>
         </Routes>
     )
 
