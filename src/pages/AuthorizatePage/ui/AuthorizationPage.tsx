@@ -1,4 +1,4 @@
-import {memo, ReactNode, useState} from 'react';
+import {memo, ReactNode, useState, useEffect} from 'react';
 import {classNames, Mods} from "shared/lib/classNames/classNames";
 import axios from 'axios';
 import cls from "./AuthorizationPage.module.scss"
@@ -8,6 +8,8 @@ import facebook from "../../../shared/assets/icons/facebook.svg"
 import google from "../../../shared/assets/icons/google.svg"
 import yandex from "../../../shared/assets/icons/яндекс.svg"
 import imageAuth from "../../../shared/assets/picture/image-auth.svg"
+import {useNavigate} from "react-router-dom";
+
 
 interface AuthorizatePageProps {
     className?: string
@@ -18,26 +20,31 @@ interface AuthorizatePageProps {
 const AuthorizationPage = memo((props: AuthorizatePageProps) => {
 
     const [login, setLogin] = useState('');
-  const [password, setPassword] = useState('');
+    const [password, setPassword] = useState('');
+    const [isAuthenticated, setAuthenticated] = useState(false)
+    const navigate = useNavigate();
 
-  const onLogin = async (event: { preventDefault: () => void; }) => {
-    event.preventDefault();
+      const onLogin = async (event: { preventDefault: () => void; }) => {
+        event.preventDefault();
 
-    try {
-        const dataUser = {
-          login: login,
-          password: password
-        };
-        const headers = {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        };
+        try {
+            const dataUser = {
+              login: login,
+              password: password
+            };
+            const headers = {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            };
 
         await axios.post('https://gateway.scan-interfax.ru/api/v1/account/login', dataUser, { headers })
           .then(response => {
-            console.log(response.data);
             const accessToken = response.data.accessToken
             localStorage.setItem('accessToken', accessToken);
+            console.log("ayth")
+              setAuthenticated(true)
+              // navigate("/")
+                      // return redirect("/tarifs")
           })
           .catch(error => {
             console.error(error);
@@ -45,19 +52,28 @@ const AuthorizationPage = memo((props: AuthorizatePageProps) => {
         ;
 
 
-    } catch (error) {
-    }
-  };
+        } catch (error) {
+        }
+      };
 
-    const {
-        className,
-        children,
-        ...otherProps
-    } = props
+        useEffect(() => {
+            if (isAuthenticated) {
+                navigate("/");
+            } else {
+                navigate("/authorize");
+            }
+            }, [navigate, isAuthenticated]);
 
-    const mods: Mods = {
 
-    };
+        const {
+            className,
+            children,
+            ...otherProps
+        } = props
+
+        const mods: Mods = {
+
+        };
 
     return (
         <div

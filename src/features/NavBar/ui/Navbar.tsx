@@ -3,7 +3,7 @@ import {classNames, Mods} from "shared/lib/classNames/classNames";
 import cls from "./Navbar.module.scss"
 import {ContentWrapper} from "../../../shared/ui/ContentWrapper/ContentWrapper";
 import {Button} from "../../../shared/ui/Button/Button";
-import {Link, useLocation} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {routeConfig} from "../../../app/providers/router/config/routeConfig";
 import {AppRoutes, routeNames} from "../../../shared/consts/routes/routes";
 
@@ -24,70 +24,60 @@ export const DetailsNavbar = memo((props: NavbarProps) => {
         const accessToken = localStorage.getItem('accessToken');
         const [usedCompanyCount, setUsedCompanyCount] = useState('0');
         const [companyLimit, setCompanyLimit] = useState('');
-        const [isauthorized, setAuthorized] =useState<string>("")
+        const [isauthorized, setAuthorized] =useState<boolean>(false)
         const localStorageСlear = () => {
-          localStorage.clear()
+            localStorage.clear()
+            setAuthorized(false)
         }
 
-    useEffect(() => {
-        const storedData = localStorage.getItem('accessToken');
-        setAuthorized(storedData || '')
-    },[])
+         axios.get('https://gateway.scan-interfax.ru/api/v1/account/info', {
+          headers: {
+            Authorization: `Bearer ${accessToken}`
+          }
+        })
+          .then(response => {
+              setUsedCompanyCount(response.data.eventFiltersInfo.usedCompanyCount)
+              setCompanyLimit(response.data.eventFiltersInfo.companyLimit)
+            console.log(response.data);
+              setAuthorized(true)
+          })
+          .catch(error => {
+            console.error(error);
+          });
 
 
+        const {
+            className,
+            children,
+            ...otherProps
+        } = props
+            const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+        const handleToggleNavbar = () => {
+        setIsNavbarOpen(!isNavbarOpen);
+      };
 
 
-     axios.get('https://gateway.scan-interfax.ru/api/v1/account/info', {
-      headers: {
-        Authorization: `Bearer ${accessToken}`
-      }
-    })
-      .then(response => {
-          setUsedCompanyCount(response.data.eventFiltersInfo.usedCompanyCount)
-          setCompanyLimit(response.data.eventFiltersInfo.companyLimit)
-        console.log(response.data);
-      })
-      .catch(error => {
-        console.error(error);
-      });
+        const mods: Mods = {
+            [cls.Navbar]: !isNavbarOpen,
+            [cls.NavbarOpen]: isNavbarOpen,
+        };
 
+        const linkComponent =
+            <div className={cls.ButtonGroup}>
+                {Object.entries(routeConfig)
+                    .filter(([route, props]) => !props.authOnly)
+                    .map(([rout, props]) => (
 
-    const {
-        className,
-        children,
-        ...otherProps
-    } = props
-        const [isNavbarOpen, setIsNavbarOpen] = useState(false);
-    const handleToggleNavbar = () => {
-    setIsNavbarOpen(!isNavbarOpen);
-  };
-
-
-    const mods: Mods = {
-        [cls.Navbar]: !isNavbarOpen,
-        [cls.NavbarOpen]: isNavbarOpen,
-    };
-
-        const location = useLocation();
-    const combinedClassName = classNames("", mods, [className]);
-    const linkComponent =
-        <div className={cls.ButtonGroup}>
-            {Object.entries(routeConfig)
-                .filter(([route, props]) => !props.authOnly)
-                .map(([rout, props]) => (
-
-                <div key={rout}>
-                        <Link to={props.path || '/'}>
-                            <a className={cls.ButtonLink}>
-                                {routeNames[rout as AppRoutes]}
-                            </a>
-                        </Link>
+                    <div key={rout}>
+                            <Link to={props.path || '/'}>
+                                <a className={cls.ButtonLink}>
+                                    {routeNames[rout as AppRoutes]}
+                                </a>
+                            </Link>
+                    </div>
+                    ))
+                }
                 </div>
-
-            ))
-            }
-
-        </div>
 
 
     return (
