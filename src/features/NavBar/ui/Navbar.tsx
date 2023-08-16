@@ -12,6 +12,9 @@ import logoMobile from "../../../shared/assets/icons/logo.svg"
 import menu from "../../../shared/assets/icons/menu-navbar.svg"
 import cross from "../../../shared/assets/icons/cross-mobile.svg"
 import axios from "axios";
+import {useAppDispatch, useAppSelector} from "../../../shared/lib/hook/ReduxHooks/redux";
+import {authPageSlice} from "../../../pages/AuthorizatePage/model/AuthSlice";
+
 
 interface NavbarProps {
     className?: string
@@ -24,10 +27,21 @@ export const DetailsNavbar = memo((props: NavbarProps) => {
         const accessToken = localStorage.getItem('accessToken');
         const [usedCompanyCount, setUsedCompanyCount] = useState('0');
         const [companyLimit, setCompanyLimit] = useState('');
-        const [isauthorized, setAuthorized] =useState<boolean>(false)
+        // const [isauthorized, setAuthorized] =useState<boolean>(false);
+            const {isauthorized} = useAppSelector(state => state.authReducer);
+                const {addauth} = authPageSlice.actions;
+    const dispach = useAppDispatch()
+
+
+        // const {auth} = useAppSelector(state => state.authReducer);
+        // const {addauth} = authPageSlice.actions;
+        // const dispach = useAppDispatch()
+
         const localStorageСlear = () => {
             localStorage.clear()
-            setAuthorized(false)
+            dispach(addauth(false))
+
+
         }
 
          axios.get('https://gateway.scan-interfax.ru/api/v1/account/info', {
@@ -39,7 +53,7 @@ export const DetailsNavbar = memo((props: NavbarProps) => {
               setUsedCompanyCount(response.data.eventFiltersInfo.usedCompanyCount)
               setCompanyLimit(response.data.eventFiltersInfo.companyLimit)
             console.log(response.data);
-              setAuthorized(true)
+              // setAuthorized(true)
           })
           .catch(error => {
             console.error(error);

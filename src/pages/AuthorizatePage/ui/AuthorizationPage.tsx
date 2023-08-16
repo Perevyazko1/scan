@@ -9,6 +9,8 @@ import google from "../../../shared/assets/icons/google.svg"
 import yandex from "../../../shared/assets/icons/яндекс.svg"
 import imageAuth from "../../../shared/assets/picture/image-auth.svg"
 import {useNavigate} from "react-router-dom";
+import {useAppDispatch, useAppSelector} from "../../../shared/lib/hook/ReduxHooks/redux";
+import {authPageSlice} from "../model/AuthSlice";
 
 
 interface AuthorizatePageProps {
@@ -23,6 +25,12 @@ const AuthorizationPage = memo((props: AuthorizatePageProps) => {
     const [password, setPassword] = useState('');
     const [isAuthenticated, setAuthenticated] = useState(false)
     const navigate = useNavigate();
+    const {isauthorized} = useAppSelector(state => state.authReducer);
+    const {addauth} = authPageSlice.actions;
+    const dispach = useAppDispatch()
+    useEffect(()=> {
+    },[isauthorized])
+
 
       const onLogin = async (event: { preventDefault: () => void; }) => {
         event.preventDefault();
@@ -41,7 +49,7 @@ const AuthorizationPage = memo((props: AuthorizatePageProps) => {
           .then(response => {
             const accessToken = response.data.accessToken
             localStorage.setItem('accessToken', accessToken);
-            console.log("ayth")
+            dispach(addauth(true))
               setAuthenticated(true)
               // navigate("/")
                       // return redirect("/tarifs")
