@@ -1,14 +1,18 @@
-import {combineReducers, configureStore} from "@reduxjs/toolkit";
+import {combineReducers, configureStore, getDefaultMiddleware} from "@reduxjs/toolkit";
+import { postApi } from "app/providers/services/RtkService";
 import authReducer from "../../../../pages/AuthorizatePage/model/AuthSlice";
 
 const rootReducer = combineReducers({
-    authReducer
+    authReducer,
+    [postApi.reducerPath]: postApi.reducer
 })
 
 
 export const setupStore = ()=> {
     return configureStore({
-    reducer: rootReducer
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(postApi.middleware)
 })
 }
 

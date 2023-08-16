@@ -11,6 +11,8 @@ import imageAuth from "../../../shared/assets/picture/image-auth.svg"
 import {useNavigate} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../../shared/lib/hook/ReduxHooks/redux";
 import {authPageSlice} from "../model/AuthSlice";
+import {postApi} from "../../../app/providers/services/RtkService";
+import {Token} from "../../../app/providers/StoreProvider/models/Token";
 
 
 interface AuthorizatePageProps {
@@ -23,63 +25,44 @@ const AuthorizationPage = memo((props: AuthorizatePageProps) => {
 
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
-    const [isAuthenticated, setAuthenticated] = useState(false)
     const navigate = useNavigate();
-    const {isauthorized} = useAppSelector(state => state.authReducer);
     const {addauth} = authPageSlice.actions;
     const dispach = useAppDispatch()
-    useEffect(()=> {
-    },[isauthorized])
 
+    const [loginApi,{data, isLoading, error}] = postApi.useLoginApiMutation()
 
-      const onLogin = async (event: { preventDefault: () => void; }) => {
+    useEffect(()=>{
+        if (data){
+            navigate("/");
+            localStorage.setItem('accessToken', data.accessToken);
+
+        }else {
+            navigate("/authorize");
+        }
+
+    },[navigate,isLoading])
+
+    const onLogin = async (event: { preventDefault: () => void; }) => {
         event.preventDefault();
-
         try {
             const dataUser = {
               login: login,
               password: password
             };
-            const headers = {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-            };
-
-        await axios.post('https://gateway.scan-interfax.ru/api/v1/account/login', dataUser, { headers })
-          .then(response => {
-            const accessToken = response.data.accessToken
-            localStorage.setItem('accessToken', accessToken);
+            await loginApi(dataUser as Token)
             dispach(addauth(true))
-              setAuthenticated(true)
-              // navigate("/")
-                      // return redirect("/tarifs")
-          })
-          .catch(error => {
-            console.error(error);
-          });
-        ;
-
-
         } catch (error) {
         }
       };
 
-        useEffect(() => {
-            if (isAuthenticated) {
-                navigate("/");
-            } else {
-                navigate("/authorize");
-            }
-            }, [navigate, isAuthenticated]);
-
-
-        const {
+    const {
             className,
             children,
             ...otherProps
         } = props
 
-        const mods: Mods = {
+
+    const mods: Mods = {
 
         };
 
