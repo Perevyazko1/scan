@@ -14,6 +14,10 @@ import cross from "../../../shared/assets/icons/cross-mobile.svg"
 import axios from "axios";
 import {useAppDispatch, useAppSelector} from "../../../shared/lib/hook/ReduxHooks/redux";
 import {authPageSlice} from "../../../pages/AuthorizatePage/model/AuthSlice";
+import {postApi} from "../../../app/providers/services/RtkService";
+import download from "../../../shared/assets/icons/download.svg"
+import {CompanyCount} from "../../../app/providers/StoreProvider/models/CompanyCount";
+import {isBooleanObject} from "util/types";
 
 
 interface NavbarProps {
@@ -27,6 +31,24 @@ export const DetailsNavbar = memo((props: NavbarProps) => {
         const accessToken = localStorage.getItem('accessToken');
         const [usedCompanyCount, setUsedCompanyCount] = useState('0');
         const [companyLimit, setCompanyLimit] = useState('');
+        const [loading, setLoading] = useState(false)
+
+
+
+        const {data:count, isLoading, error} = postApi.useCompanyCountQuery(1)
+        useEffect(()=>{
+
+            // console.log(`data ${count.usedCompanyCount}`)
+
+
+
+
+            // console.log(`load ${isLoading}`)
+            console.log(`error  ${JSON.stringify(error) }`)
+        },[])
+
+
+
         // const [isauthorized, setAuthorized] =useState<boolean>(false);
             const {isauthorized} = useAppSelector(state => state.authReducer);
                 const {addauth} = authPageSlice.actions;
@@ -43,21 +65,32 @@ export const DetailsNavbar = memo((props: NavbarProps) => {
 
 
         }
+        useEffect(()=>{
+            if(count){
+             setUsedCompanyCount(JSON.stringify(count.eventFiltersInfo.usedCompanyCount))
+              setCompanyLimit(JSON.stringify(count.eventFiltersInfo.companyLimit))
 
-         axios.get('https://gateway.scan-interfax.ru/api/v1/account/info', {
-          headers: {
-            Authorization: `Bearer ${accessToken}`
-          }
-        })
-          .then(response => {
-              setUsedCompanyCount(response.data.eventFiltersInfo.usedCompanyCount)
-              setCompanyLimit(response.data.eventFiltersInfo.companyLimit)
-            console.log(response.data);
-              // setAuthorized(true)
-          })
-          .catch(error => {
-            console.error(error);
-          });
+            }
+
+            console.log(`load ${isLoading}`)
+            setLoading(loading)
+        },[isLoading])
+
+        //  axios.get('https://gateway.scan-interfax.ru/api/v1/account/info', {
+        //   headers: {
+        //     Authorization: `Bearer ${accessToken}`
+        //   }
+        // })
+        //   .then(response => {
+        //       if (count){
+        //       }
+        //
+        //     console.log(response.data);
+        //       // setAuthorized(true)
+        //   })
+        //   .catch(error => {
+        //     console.error(error);
+        //   });
 
 
         const {
@@ -103,18 +136,25 @@ export const DetailsNavbar = memo((props: NavbarProps) => {
                 <img src={logoDesktop} className={cls.LogoDesktop}/>
                 <img src={logoMobile} className={cls.LogoMobile}/>
                 {linkComponent}
-
                 <div className={cls.SignGroup}>
                     {isauthorized? (<div></div>):(<p>Зарегистрироваться</p>)}
                     {isauthorized? (
                     <div className={cls.Limits}>
-                        <div className={cls.RowCompanyLimit}>
-                            Использовано компаний : {usedCompanyCount}
-                        </div>
-                        <div className={cls.RowCompanyLimit}>
-                            Лимит по компаниям :
+                        {isLoading? (
+                            <img src={download} className={cls.Download}/>
+                        ):(
+                        <div>
+                            <div className={cls.RowCompanyLimit}>
+                                Использовано компаний : {usedCompanyCount}
+                            </div>
+                            <div className={cls.RowCompanyLimit}>
+                                Лимит по компаниям :
                             <span className={cls.CompanyLimit}>{companyLimit}</span>
+                            </div>
                         </div>
+                        )}
+
+
                     </div>
                     ):(<div></div>)}
                         {isauthorized? (<Button className={cls.SignButton} onClick={localStorageСlear}>Выйти</Button>):

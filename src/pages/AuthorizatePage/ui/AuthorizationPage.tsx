@@ -34,6 +34,8 @@ const AuthorizationPage = memo((props: AuthorizatePageProps) => {
     useEffect(()=>{
         if (data){
             navigate("/");
+
+            console.log(data.accessToken)
             localStorage.setItem('accessToken', data.accessToken);
 
         }else {

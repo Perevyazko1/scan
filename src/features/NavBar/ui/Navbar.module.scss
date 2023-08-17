@@ -11,6 +11,18 @@
     padding: 5px;
     font: var(--font-bottom-main);
 }
+
+@keyframes spin {
+  0% { transform: rotate(0); }
+  100% { transform: rotate(360deg); }
+}
+
+.Download {
+  animation: spin 2s linear infinite;
+    width: 44px;
+}
+
+
 .RowCompanyLimit{
     margin: 10px;
 }
