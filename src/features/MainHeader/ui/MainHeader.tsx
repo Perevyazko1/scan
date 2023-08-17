@@ -5,6 +5,7 @@ import cls from "./MainHeader.module.scss"
 import pictureHeader from "../../../shared/assets/picture/picture-header.svg"
 import {ContentWrapper} from "../../../shared/ui/ContentWrapper/ContentWrapper";
 import {Button} from "../../../shared/ui/Button/Button";
+import {Link} from "react-router-dom";
 
 interface MainHeaderProps {
     className?: string
@@ -37,7 +38,10 @@ export const DetailsMainHeader = memo((props: MainHeaderProps) => {
                     <div className={cls.SmallText}>
                         Комплексный анализ публикаций, получение данных в формате PDF на электронную почту.
                     </div>
-                    <Button className={cls.Button}>Запросить данные</Button>
+                    <Link to={"http://localhost:3000/search"}>
+                        <Button className={cls.Button}>Запросить данные</Button>
+                    </Link>
+
                 </div>
                     <img className={cls.Picture} src={pictureHeader}/>
 
