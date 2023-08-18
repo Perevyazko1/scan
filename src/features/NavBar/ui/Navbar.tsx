@@ -44,7 +44,6 @@ export const DetailsNavbar = memo((props: NavbarProps) => {
 
 
             // console.log(`load ${isLoading}`)
-            console.log(`error  ${JSON.stringify(error) }`)
         },[])
 
 
@@ -72,7 +71,6 @@ export const DetailsNavbar = memo((props: NavbarProps) => {
 
             }
 
-            console.log(`load ${isLoading}`)
             setLoading(loading)
         },[isLoading])
 

@@ -35,7 +35,6 @@ const AuthorizationPage = memo((props: AuthorizatePageProps) => {
         if (data){
             navigate("/");
 
-            console.log(data.accessToken)
             localStorage.setItem('accessToken', data.accessToken);
 
         }else {
