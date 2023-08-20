@@ -32,26 +32,19 @@ export const DetailsNavbar = memo((props: NavbarProps) => {
         const [usedCompanyCount, setUsedCompanyCount] = useState('0');
         const [companyLimit, setCompanyLimit] = useState('');
         const [loading, setLoading] = useState(false)
-
-
-
         const {data:count, isLoading, error} = postApi.useCompanyCountQuery(1)
         useEffect(()=>{
-
-            // console.log(`data ${count.usedCompanyCount}`)
-
-
-
-
-            // console.log(`load ${isLoading}`)
+            if(accessToken){
+               dispach(addauth(true))
+            }
         },[])
 
 
 
         // const [isauthorized, setAuthorized] =useState<boolean>(false);
-            const {isauthorized} = useAppSelector(state => state.authReducer);
-                const {addauth} = authPageSlice.actions;
-    const dispach = useAppDispatch()
+        const {isauthorized} = useAppSelector(state => state.authReducer);
+        const {addauth} = authPageSlice.actions;
+        const dispach = useAppDispatch()
 
 
         // const {auth} = useAppSelector(state => state.authReducer);
