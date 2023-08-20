@@ -108,7 +108,7 @@ useEffect(()=>{
                     <Input className={cls.InputCheckbox} type={"checkbox"}/>
                     Включать сводки новостей
                 </div>
-                <Button className={cls.Button} disabled={!inn} onClick={handleSearch}>Поиск</Button>
+                <Button className={cls.Button} outline={!inn} onClick={handleSearch}>Поиск</Button>
                 <p className={cls.SubtitleButton}>* Обязательные к заполнению поля</p>
             </div>
 

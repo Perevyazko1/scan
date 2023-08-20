@@ -5,6 +5,7 @@ import cls from "./Button.module.scss"
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
     className?: string
     children?: ReactNode
+    outline?: boolean
 }
 
 
@@ -12,11 +13,12 @@ export const Button = memo((props: ButtonProps) => {
     const {
         className,
         children,
+        outline = false,
         ...otherProps
     } = props
     
     const mods: Mods = {
-        
+        [cls.outline]: outline,
     };
     
     return (
