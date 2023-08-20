@@ -1,17 +1,15 @@
-import {memo, ReactNode, useEffect, useState, ChangeEvent} from 'react';
+import {memo, ReactNode, useEffect, useState} from 'react';
 import {classNames, Mods} from "shared/lib/classNames/classNames";
 import cls from "./SearchFilter.module.scss"
 import {Input} from "../../../shared/ui/Input/Input";
 import {Button} from "../../../shared/ui/Button/Button"
 import {useAppDispatch} from "../../../shared/lib/hook/ReduxHooks/redux";
 import {postApi} from "../../../app/providers/services/RtkService";
-import {Token} from "../../../app/providers/StoreProvider/models/Token";
 import {Patch} from "../../../app/providers/StoreProvider/models/Patch";
 
 interface SearchFilterProps {
     className?: string
     children?: ReactNode
-    isEmpty: boolean
 }
 
 
@@ -20,13 +18,18 @@ export const DetailsSearchFilter = memo((props: SearchFilterProps) => {
     const [limit, setLimit] = useState(0)
     const [startDate,setStartDate] = useState("")
     const [endDate,setEndDate] = useState("")
-    // let isEmpty:boolean = false
+    const [isEmpty,setIsEmpty] = useState(false)
 
-    // useEffect(()=>{
-    //     if(inn & limit & startDate & endDate){
-    //         isEmpty = true
-    //     }
-    // },[inn, limit, startDate, endDate])
+
+    useEffect(()=>{
+                if(inn && limit && startDate && endDate){
+            setIsEmpty(true)
+
+        }else {
+               setIsEmpty(false)
+                }
+console.log(isEmpty)
+    },[inn,limit, startDate, endDate])
 
     const dispach = useAppDispatch()
     const [objectSearch,{data,isLoading,error}] =postApi.useObjectSearchMutation()
@@ -120,7 +123,7 @@ useEffect(()=>{
                     <Input className={cls.InputCheckbox} type={"checkbox"}/>
                     Включать сводки новостей
                 </div>
-                <Button className={cls.Button} disabled={!inn} outline={!inn} onClick={handleSearch}>Поиск</Button>
+                <Button className={cls.Button} disabled={!inn} outline={!isEmpty} onClick={handleSearch}>Поиск</Button>
                 <p className={cls.SubtitleButton}>* Обязательные к заполнению поля</p>
             </div>
 
