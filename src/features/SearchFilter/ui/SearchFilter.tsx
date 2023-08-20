@@ -11,15 +11,22 @@ import {Patch} from "../../../app/providers/StoreProvider/models/Patch";
 interface SearchFilterProps {
     className?: string
     children?: ReactNode
+    isEmpty: boolean
 }
 
 
 export const DetailsSearchFilter = memo((props: SearchFilterProps) => {
     const [inn, setInn] = useState(0)
-    const [limit, setLimit] = useState(1)
-    const [startDate,setStartDate] = useState("2019-01-01")
-    const [endDate,setEndDate] = useState("2022-08-31")
-    console.log(endDate)
+    const [limit, setLimit] = useState(0)
+    const [startDate,setStartDate] = useState("")
+    const [endDate,setEndDate] = useState("")
+    // let isEmpty:boolean = false
+
+    // useEffect(()=>{
+    //     if(inn & limit & startDate & endDate){
+    //         isEmpty = true
+    //     }
+    // },[inn, limit, startDate, endDate])
 
     const dispach = useAppDispatch()
     const [objectSearch,{data,isLoading,error}] =postApi.useObjectSearchMutation()
@@ -27,16 +34,14 @@ export const DetailsSearchFilter = memo((props: SearchFilterProps) => {
 
     const handleSearch = async (event: { preventDefault: () => void; }) => {
         event.preventDefault();
-            const patch =`/objectsearch`
-            const patch2 =`/objectsearch/histograms`
-        const searchRequest: Patch = {
+        const searchObjectsearch: Patch = {
         patch: '/objectsearch',
         inn: inn,
         limit: limit,
         startDate:startDate,
         endDate:endDate,
 }
-        const searchRequest2: Patch = {
+        const searchHistograms: Patch = {
         patch: '/objectsearch/histograms',
         inn: inn,
         limit: limit,
@@ -44,10 +49,8 @@ export const DetailsSearchFilter = memo((props: SearchFilterProps) => {
         endDate:endDate,
 }
 
-            await objectSearch(searchRequest)
-            await objectSearch(searchRequest2)
-        // const ids = "1:0JPQqdGM0JNWCdCzf2Jt0LHQotGV0ZUh0ZbRlBXCt0Je0JHQruKAnDcUXkZQ0YvQscKnehLRnNC1KtGK0Ll9BWLigLo/HXXCrhw="
-        //     await documents(ids)
+        await objectSearch(searchObjectsearch)
+        await objectSearch(searchHistograms)
 
 
 
@@ -84,8 +87,8 @@ useEffect(()=>{
                 <Input empty={!limit} onChange={(event) => setLimit(Number(event.target.value))} />
                 <p>Диапазон поиска *</p>
                 <span>
-                    <Input type={"date"} className={cls.DoubleInput} onChange={(event) => setStartDate(event.target.value)} />
-                    <Input type={"date"} className={cls.DoubleInput} onChange={(event) => setEndDate(event.target.value)} />
+                    <Input type={"date"} empty={!startDate} className={cls.DoubleInput} onChange={(event) => setStartDate(event.target.value)} />
+                    <Input type={"date"} empty={!endDate} className={cls.DoubleInput} onChange={(event) => setEndDate(event.target.value)} />
                 </span>
             </div>
             <div className={cls.ContainerCheckBox}>
@@ -117,7 +120,7 @@ useEffect(()=>{
                     <Input className={cls.InputCheckbox} type={"checkbox"}/>
                     Включать сводки новостей
                 </div>
-                <Button className={cls.Button} outline={!inn} onClick={handleSearch}>Поиск</Button>
+                <Button className={cls.Button} disabled={!inn} outline={!inn} onClick={handleSearch}>Поиск</Button>
                 <p className={cls.SubtitleButton}>* Обязательные к заполнению поля</p>
             </div>
 
