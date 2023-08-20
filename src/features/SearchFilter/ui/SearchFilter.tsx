@@ -28,7 +28,6 @@ export const DetailsSearchFilter = memo((props: SearchFilterProps) => {
         }else {
                setIsEmpty(false)
                 }
-console.log(isEmpty)
     },[inn,limit, startDate, endDate])
 
     const dispach = useAppDispatch()
@@ -37,12 +36,13 @@ console.log(isEmpty)
 
     const handleSearch = async (event: { preventDefault: () => void; }) => {
         event.preventDefault();
+
         const searchObjectsearch: Patch = {
         patch: '/objectsearch',
         inn: inn,
         limit: limit,
-        startDate:startDate,
-        endDate:endDate,
+        startDate: startDate,
+        endDate: endDate,
 }
         const searchHistograms: Patch = {
         patch: '/objectsearch/histograms',
