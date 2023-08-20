@@ -17,7 +17,9 @@ interface SearchFilterProps {
 export const DetailsSearchFilter = memo((props: SearchFilterProps) => {
     const [inn, setInn] = useState(0)
     const [limit, setLimit] = useState(1)
-
+    const [startDate,setStartDate] = useState("2019-01-01")
+    const [endDate,setEndDate] = useState("2022-08-31")
+    console.log(endDate)
 
     const dispach = useAppDispatch()
     const [objectSearch,{data,isLoading,error}] =postApi.useObjectSearchMutation()
@@ -30,12 +32,16 @@ export const DetailsSearchFilter = memo((props: SearchFilterProps) => {
         const searchRequest: Patch = {
         patch: '/objectsearch',
         inn: inn,
-        limit: limit
+        limit: limit,
+        startDate:startDate,
+        endDate:endDate,
 }
         const searchRequest2: Patch = {
         patch: '/objectsearch/histograms',
         inn: inn,
-        limit: limit
+        limit: limit,
+        startDate:startDate,
+        endDate:endDate,
 }
 
             await objectSearch(searchRequest)
@@ -78,8 +84,8 @@ useEffect(()=>{
                 <Input empty={!limit} onChange={(event) => setLimit(Number(event.target.value))} />
                 <p>Диапазон поиска *</p>
                 <span>
-                    <Input type={"date"} className={cls.DoubleInput}/>
-                    <Input type={"date"} className={cls.DoubleInput}/>
+                    <Input type={"date"} className={cls.DoubleInput} onChange={(event) => setStartDate(event.target.value)} />
+                    <Input type={"date"} className={cls.DoubleInput} onChange={(event) => setEndDate(event.target.value)} />
                 </span>
             </div>
             <div className={cls.ContainerCheckBox}>

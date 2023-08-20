@@ -34,14 +34,14 @@ export const postApi = createApi({
             providesTags: result => ["Post"]
         }),
         objectSearch: build.mutation<Patch, Patch>({
-            query: ({patch,inn,limit}) =>({
+            query: ({patch, inn, limit, startDate, endDate}) =>({
                 url:`${patch}`,
                 method: 'POST',
                 body:{
 
               "issueDateInterval": {
-                "startDate": "2019-01-01T00:00:00+03:00",
-                "endDate": "2022-08-31T23:59:59+03:00"
+                "startDate": `${startDate}T00:00:00+03:00`,
+                "endDate": `${endDate}T23:59:59+03:00`
               },
               "searchContext": {
                 "targetSearchEntitiesContext": {
