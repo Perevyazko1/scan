@@ -75,7 +75,7 @@ useEffect(()=>{
                 <p>Тональность</p>
                 <Input/>
                 <p>Количество документов в выдаче *</p>
-                <Input onChange={(event) => setLimit(Number(event.target.value))} />
+                <Input empty={!limit} onChange={(event) => setLimit(Number(event.target.value))} />
                 <p>Диапазон поиска *</p>
                 <span>
                     <Input type={"date"} className={cls.DoubleInput}/>
