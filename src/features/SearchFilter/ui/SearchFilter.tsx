@@ -16,6 +16,7 @@ interface SearchFilterProps {
 
 export const DetailsSearchFilter = memo((props: SearchFilterProps) => {
     const [inn, setInn] = useState(0)
+    const [limit, setLimit] = useState(1)
 
 
     const dispach = useAppDispatch()
@@ -28,11 +29,13 @@ export const DetailsSearchFilter = memo((props: SearchFilterProps) => {
             const patch2 =`/objectsearch/histograms`
         const searchRequest: Patch = {
         patch: '/objectsearch',
-        inn: inn
+        inn: inn,
+        limit: limit
 }
         const searchRequest2: Patch = {
         patch: '/objectsearch/histograms',
-        inn: inn
+        inn: inn,
+        limit: limit
 }
 
             await objectSearch(searchRequest)
@@ -72,7 +75,7 @@ useEffect(()=>{
                 <p>Тональность</p>
                 <Input/>
                 <p>Количество документов в выдаче *</p>
-                <Input/>
+                <Input onChange={(event) => setLimit(Number(event.target.value))} />
                 <p>Диапазон поиска *</p>
                 <span>
                     <Input type={"date"} className={cls.DoubleInput}/>

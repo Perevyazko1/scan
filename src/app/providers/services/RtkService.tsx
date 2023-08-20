@@ -34,7 +34,7 @@ export const postApi = createApi({
             providesTags: result => ["Post"]
         }),
         objectSearch: build.mutation<Patch, Patch>({
-            query: ({patch,inn}) =>({
+            query: ({patch,inn,limit}) =>({
                 url:`${patch}`,
                 method: 'POST',
                 body:{
@@ -87,7 +87,7 @@ export const postApi = createApi({
                 "excludeDigests": true
               },
               "similarMode": "duplicates",
-              "limit": 1000,
+              "limit": `${limit}`,
               "sortType": "sourceInfluence",
               "sortDirectionType": "desc",
               "intervalType": "month",
