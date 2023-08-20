@@ -4,4 +4,5 @@ export interface Patch{
     limit?: number,
     startDate: string,
     endDate:string,
+    tonality: string,
 }

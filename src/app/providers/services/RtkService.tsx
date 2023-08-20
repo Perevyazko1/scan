@@ -34,7 +34,7 @@ export const postApi = createApi({
             providesTags: result => ["Post"]
         }),
         objectSearch: build.mutation<Patch, Patch>({
-            query: ({patch, inn, limit, startDate, endDate}) =>({
+            query: ({patch, inn, limit, startDate, endDate, tonality}) =>({
                 url:`${patch}`,
                 method: 'POST',
                 body:{
@@ -56,7 +56,7 @@ export const postApi = createApi({
                     }
                   ],
                   "onlyMainRole": true,
-                  "tonality": "any",
+                  "tonality": `${tonality}`,
                   "onlyWithRiskFactors": false,
                   "riskFactors": {
                     "and": [],

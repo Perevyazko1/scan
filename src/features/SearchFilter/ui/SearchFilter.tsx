@@ -20,6 +20,7 @@ export const DetailsSearchFilter = memo((props: SearchFilterProps) => {
     const [startDate,setStartDate] = useState("")
     const [endDate,setEndDate] = useState("")
     const [isEmpty,setIsEmpty] = useState(false)
+    const [tonality, setTonality] = useState("any")
 
 
     useEffect(()=>{
@@ -44,6 +45,7 @@ export const DetailsSearchFilter = memo((props: SearchFilterProps) => {
         limit: limit,
         startDate: startDate,
         endDate: endDate,
+        tonality: tonality,
 }
         const searchHistograms: Patch = {
         patch: '/objectsearch/histograms',
@@ -51,6 +53,7 @@ export const DetailsSearchFilter = memo((props: SearchFilterProps) => {
         limit: limit,
         startDate:startDate,
         endDate:endDate,
+        tonality: tonality,
 }
 
         await objectSearch(searchObjectsearch)
@@ -84,9 +87,9 @@ useEffect(()=>{
         >
             <div className={cls.ContainerInput}>
                 <p> Инн компании *</p>
-                <Input name="inputInn" empty={!inn} type={"number"} onChange={(event) => setInn(Number(event.target.value))}/>
+                <Input empty={!inn} type={"number"} onChange={(event) => setInn(Number(event.target.value))}/>
                 <p>Тональность</p>
-                <Select>
+                <Select onChange={(event) => setTonality(event.target.value)}>
                     <option value={"any"}>Не проверяется</option>
                     <option value={"negative"}>Негативная</option>
                     <option value={"positive"}>Позитивная</option>
