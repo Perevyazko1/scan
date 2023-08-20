@@ -2,6 +2,7 @@ import {memo, ReactNode, useEffect, useState} from 'react';
 import {classNames, Mods} from "shared/lib/classNames/classNames";
 import cls from "./SearchFilter.module.scss"
 import {Input} from "../../../shared/ui/Input/Input";
+import {Select} from "../../../shared/ui/Select/Select";
 import {Button} from "../../../shared/ui/Button/Button"
 import {useAppDispatch} from "../../../shared/lib/hook/ReduxHooks/redux";
 import {postApi} from "../../../app/providers/services/RtkService";
@@ -85,7 +86,11 @@ useEffect(()=>{
                 <p> Инн компании *</p>
                 <Input name="inputInn" empty={!inn} type={"number"} onChange={(event) => setInn(Number(event.target.value))}/>
                 <p>Тональность</p>
-                <Input/>
+                <Select>
+                    <option value={"any"}>Не проверяется</option>
+                    <option value={"negative"}>Негативная</option>
+                    <option value={"positive"}>Позитивная</option>
+                </Select>
                 <p>Количество документов в выдаче *</p>
                 <Input empty={!limit} onChange={(event) => setLimit(Number(event.target.value))} />
                 <p>Диапазон поиска *</p>

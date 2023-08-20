@@ -1,0 +1,14 @@
+.Select{
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    margin: 10px;
+    height: 55px;
+    width: 225px;
+    //width: 80%;
+    font: var(--font-small-main-mobile);
+
+}
+.empty{
+    box-shadow: 0 0 5px rgb(234, 0, 0);
+}
