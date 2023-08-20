@@ -68,7 +68,7 @@ useEffect(()=>{
         >
             <div className={cls.ContainerInput}>
                 <p> Инн компании *</p>
-                <Input name="inputInn" type={"number"} onChange={(event) => setInn(Number(event.target.value))}/>
+                <Input name="inputInn" empty={!inn} type={"number"} onChange={(event) => setInn(Number(event.target.value))}/>
                 <p>Тональность</p>
                 <Input/>
                 <p>Количество документов в выдаче *</p>
