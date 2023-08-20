@@ -1,4 +1,4 @@
-import {memo, ReactNode, useEffect} from 'react';
+import {memo, ReactNode, useEffect, useState, ChangeEvent} from 'react';
 import {classNames, Mods} from "shared/lib/classNames/classNames";
 import cls from "./SearchFilter.module.scss"
 import {Input} from "../../../shared/ui/Input/Input";
@@ -15,26 +15,30 @@ interface SearchFilterProps {
 
 
 export const DetailsSearchFilter = memo((props: SearchFilterProps) => {
+    const [inn, setInn] = useState(0)
+
+
     const dispach = useAppDispatch()
-    // const [objectSearch,{data,isLoading,error}] =postApi.useObjectSearchMutation()
-    const [documents,{data,isLoading,error}] = postApi.useDocumentsMutation()
+    const [objectSearch,{data,isLoading,error}] =postApi.useObjectSearchMutation()
+    // const [documents,{data,isLoading,error}] = postApi.useDocumentsMutation()
 
     const handleSearch = async (event: { preventDefault: () => void; }) => {
         event.preventDefault();
             const patch =`/objectsearch`
             const patch2 =`/objectsearch/histograms`
         const searchRequest: Patch = {
-        patch: '/objectsearch'
+        patch: '/objectsearch',
+        inn: inn
 }
-
         const searchRequest2: Patch = {
-        patch: '/objectsearch/histograms'
+        patch: '/objectsearch/histograms',
+        inn: inn
 }
 
-            // await objectSearch(searchRequest)
-            // await objectSearch(searchRequest2)
-        const ids = "1:0JPQqdGM0JNWCdCzf2Jt0LHQotGV0ZUh0ZbRlBXCt0Je0JHQruKAnDcUXkZQ0YvQscKnehLRnNC1KtGK0Ll9BWLigLo/HXXCrhw="
-            await documents(ids)
+            await objectSearch(searchRequest)
+            await objectSearch(searchRequest2)
+        // const ids = "1:0JPQqdGM0JNWCdCzf2Jt0LHQotGV0ZUh0ZbRlBXCt0Je0JHQruKAnDcUXkZQ0YvQscKnehLRnNC1KtGK0Ll9BWLigLo/HXXCrhw="
+        //     await documents(ids)
 
 
 
@@ -64,7 +68,7 @@ useEffect(()=>{
         >
             <div className={cls.ContainerInput}>
                 <p> Инн компании *</p>
-                <Input/>
+                <Input name="inputInn" type={"number"} onChange={(event) => setInn(Number(event.target.value))}/>
                 <p>Тональность</p>
                 <Input/>
                 <p>Количество документов в выдаче *</p>
@@ -104,7 +108,7 @@ useEffect(()=>{
                     <Input className={cls.InputCheckbox} type={"checkbox"}/>
                     Включать сводки новостей
                 </div>
-                <Button className={cls.Button} onClick={handleSearch}>Поиск</Button>
+                <Button className={cls.Button} disabled={!inn} onClick={handleSearch}>Поиск</Button>
                 <p className={cls.SubtitleButton}>* Обязательные к заполнению поля</p>
             </div>
 
