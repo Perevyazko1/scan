@@ -43,7 +43,8 @@ export const postApi = createApi({
                         maxFullness,
                         inBusinessNews,
                         onlyMainRole,
-                        onlyWithRiskFactors
+                        onlyWithRiskFactors,
+                        excludeTechNews
                     }) =>({
                 url:`${patch}`,
                 method: 'POST',
@@ -92,7 +93,7 @@ export const postApi = createApi({
                 "excludedSourceGroups": []
               },
               "attributeFilters": {
-                "excludeTechNews": true,
+                "excludeTechNews": `${excludeTechNews}`,
                 "excludeAnnouncements": true,
                 "excludeDigests": true
               },

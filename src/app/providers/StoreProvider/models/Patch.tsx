@@ -9,4 +9,5 @@ export interface Patch{
     inBusinessNews?: boolean,
     onlyMainRole?: boolean,
     onlyWithRiskFactors?: boolean,
+    excludeTechNews?: boolean,
 }
