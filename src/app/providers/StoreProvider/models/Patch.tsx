@@ -10,4 +10,5 @@ export interface Patch{
     onlyMainRole?: boolean,
     onlyWithRiskFactors?: boolean,
     excludeTechNews?: boolean,
+    excludeAnnouncements?: boolean,
 }
