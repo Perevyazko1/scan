@@ -27,6 +27,7 @@ export const DetailsSearchFilter = memo((props: SearchFilterProps) => {
     const [onlyWithRiskFactors, setOnlyWithRiskFactors] = useState(false)
     const [excludeTechNews, setExcludeTechNews] = useState(false)
     const [excludeAnnouncements, setExcludeAnnouncements] = useState(false)
+    const [excludeDigests, setExcludeDigests] = useState(false)
 
 
     useEffect(()=>{
@@ -57,7 +58,8 @@ export const DetailsSearchFilter = memo((props: SearchFilterProps) => {
         onlyMainRole:onlyMainRole,
         onlyWithRiskFactors,
         excludeTechNews,
-        excludeAnnouncements
+        excludeAnnouncements,
+        excludeDigests
 }
         const searchHistograms: Patch = {
         patch: '/objectsearch/histograms',
@@ -71,7 +73,8 @@ export const DetailsSearchFilter = memo((props: SearchFilterProps) => {
         onlyMainRole:onlyMainRole,
         onlyWithRiskFactors,
         excludeTechNews,
-        excludeAnnouncements
+        excludeAnnouncements,
+        excludeDigests
 }
 
         await objectSearch(searchObjectsearch)
@@ -146,7 +149,7 @@ useEffect(()=>{
                     Включать анонсы и календари
                 </div>
                 <div className={cls.UnitCheckbox}>
-                    <Input className={cls.InputCheckbox} type={"checkbox"}/>
+                    <Input className={cls.InputCheckbox} onChange={(event)=> setExcludeDigests(event.target.checked)} type={"checkbox"}/>
                     Включать сводки новостей
                 </div>
                 <Button className={cls.Button} disabled={!inn} outline={!isEmpty} onClick={handleSearch}>Поиск</Button>

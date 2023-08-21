@@ -11,4 +11,5 @@ export interface Patch{
     onlyWithRiskFactors?: boolean,
     excludeTechNews?: boolean,
     excludeAnnouncements?: boolean,
+    excludeDigests?: boolean
 }

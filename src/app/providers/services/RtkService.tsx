@@ -45,7 +45,8 @@ export const postApi = createApi({
                         onlyMainRole,
                         onlyWithRiskFactors,
                         excludeTechNews,
-                        excludeAnnouncements
+                        excludeAnnouncements,
+                        excludeDigests
                     }) =>({
                 url:`${patch}`,
                 method: 'POST',
@@ -96,7 +97,7 @@ export const postApi = createApi({
               "attributeFilters": {
                 "excludeTechNews": `${excludeTechNews}`,
                 "excludeAnnouncements": `${excludeAnnouncements}`,
-                "excludeDigests": true
+                "excludeDigests": `${excludeDigests}`
               },
               "similarMode": "duplicates",
               "limit": `${limit}`,
