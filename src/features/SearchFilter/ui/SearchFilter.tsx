@@ -22,6 +22,7 @@ export const DetailsSearchFilter = memo((props: SearchFilterProps) => {
     const [isEmpty,setIsEmpty] = useState(false)
     const [tonality, setTonality] = useState("any")
     const [maxFullness, setMaxFullness] = useState(false)
+    const [inBusinessNews, setInBusinessNews] = useState(false)
 
 
     useEffect(()=>{
@@ -48,6 +49,7 @@ export const DetailsSearchFilter = memo((props: SearchFilterProps) => {
         endDate: endDate,
         tonality: tonality,
         maxFullness: maxFullness,
+        inBusinessNews:inBusinessNews,
 }
         const searchHistograms: Patch = {
         patch: '/objectsearch/histograms',
@@ -57,6 +59,7 @@ export const DetailsSearchFilter = memo((props: SearchFilterProps) => {
         endDate:endDate,
         tonality: tonality,
         maxFullness: maxFullness,
+        inBusinessNews:inBusinessNews,
 }
 
         await objectSearch(searchObjectsearch)
@@ -111,7 +114,7 @@ useEffect(()=>{
                     Признак максимальной полноты
                 </div>
                 <div className={cls.UnitCheckbox}>
-                    <Input className={cls.InputCheckbox} type={"checkbox"}/>
+                    <Input className={cls.InputCheckbox} onChange={(event) => setInBusinessNews(event.target.checked)} type={"checkbox"}/>
                     Упоминания в бизнес-контексте
                 </div>
                 <div className={cls.UnitCheckbox}>

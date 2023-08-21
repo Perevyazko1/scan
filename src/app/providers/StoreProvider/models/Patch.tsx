@@ -1,9 +1,10 @@
 export interface Patch{
-    patch: string
-    inn: number
+    patch: string,
+    inn: number,
     limit?: number,
     startDate: string,
     endDate:string,
     tonality: string,
-    maxFullness?: boolean
+    maxFullness?: boolean,
+    inBusinessNews?: boolean,
 }
