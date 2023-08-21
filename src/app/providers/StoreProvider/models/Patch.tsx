@@ -8,4 +8,5 @@ export interface Patch{
     maxFullness?: boolean,
     inBusinessNews?: boolean,
     onlyMainRole?: boolean,
+    onlyWithRiskFactors?: boolean,
 }

@@ -24,6 +24,7 @@ export const DetailsSearchFilter = memo((props: SearchFilterProps) => {
     const [maxFullness, setMaxFullness] = useState(false)
     const [inBusinessNews, setInBusinessNews] = useState(false)
     const [onlyMainRole, setOnlyMainRole] = useState(false)
+    const [onlyWithRiskFactors, setOnlyWithRiskFactors] = useState(false)
 
 
     useEffect(()=>{
@@ -52,6 +53,7 @@ export const DetailsSearchFilter = memo((props: SearchFilterProps) => {
         maxFullness: maxFullness,
         inBusinessNews:inBusinessNews,
         onlyMainRole:onlyMainRole,
+        onlyWithRiskFactors,
 }
         const searchHistograms: Patch = {
         patch: '/objectsearch/histograms',
@@ -63,6 +65,7 @@ export const DetailsSearchFilter = memo((props: SearchFilterProps) => {
         maxFullness: maxFullness,
         inBusinessNews:inBusinessNews,
         onlyMainRole:onlyMainRole,
+        onlyWithRiskFactors,
 }
 
         await objectSearch(searchObjectsearch)
@@ -125,7 +128,7 @@ useEffect(()=>{
                     Главная роль в публикации
                 </div>
                 <div className={cls.UnitCheckbox}>
-                    <Input className={cls.InputCheckbox} type={"checkbox"}/>
+                    <Input className={cls.InputCheckbox} onChange={(event)=> setOnlyWithRiskFactors(event.target.checked)} type={"checkbox"}/>
                     Публикации только с риск-факторами
                 </div>
                 <div className={cls.UnitCheckbox}>
