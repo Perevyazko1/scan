@@ -21,6 +21,7 @@ export const DetailsSearchFilter = memo((props: SearchFilterProps) => {
     const [endDate,setEndDate] = useState("")
     const [isEmpty,setIsEmpty] = useState(false)
     const [tonality, setTonality] = useState("any")
+    const [maxFullness, setMaxFullness] = useState(false)
 
 
     useEffect(()=>{
@@ -46,6 +47,7 @@ export const DetailsSearchFilter = memo((props: SearchFilterProps) => {
         startDate: startDate,
         endDate: endDate,
         tonality: tonality,
+        maxFullness: maxFullness,
 }
         const searchHistograms: Patch = {
         patch: '/objectsearch/histograms',
@@ -54,6 +56,7 @@ export const DetailsSearchFilter = memo((props: SearchFilterProps) => {
         startDate:startDate,
         endDate:endDate,
         tonality: tonality,
+        maxFullness: maxFullness,
 }
 
         await objectSearch(searchObjectsearch)
@@ -104,7 +107,7 @@ useEffect(()=>{
             </div>
             <div className={cls.ContainerCheckBox}>
                 <div className={cls.UnitCheckbox}>
-                    <Input className={cls.InputCheckbox} type={"checkbox"}/>
+                    <Input onChange={(event) => setMaxFullness(event.target.checked)} className={cls.InputCheckbox} type={"checkbox"}/>
                     Признак максимальной полноты
                 </div>
                 <div className={cls.UnitCheckbox}>

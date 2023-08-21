@@ -34,7 +34,7 @@ export const postApi = createApi({
             providesTags: result => ["Post"]
         }),
         objectSearch: build.mutation<Patch, Patch>({
-            query: ({patch, inn, limit, startDate, endDate, tonality}) =>({
+            query: ({patch, inn, limit, startDate, endDate, tonality, maxFullness}) =>({
                 url:`${patch}`,
                 method: 'POST',
                 body:{
@@ -51,7 +51,7 @@ export const postApi = createApi({
                       "sparkId": null,
                       "entityId": null,
                       "inn": `${inn}`, //7710137066,
-                      "maxFullness": true,
+                      "maxFullness": `${maxFullness}`,
                       "inBusinessNews": null
                     }
                   ],

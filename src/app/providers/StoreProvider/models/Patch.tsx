@@ -5,4 +5,5 @@ export interface Patch{
     startDate: string,
     endDate:string,
     tonality: string,
+    maxFullness?: boolean
 }
