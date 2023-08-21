@@ -7,4 +7,5 @@ export interface Patch{
     tonality: string,
     maxFullness?: boolean,
     inBusinessNews?: boolean,
+    onlyMainRole?: boolean,
 }

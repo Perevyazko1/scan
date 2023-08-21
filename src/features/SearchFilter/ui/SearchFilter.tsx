@@ -23,6 +23,7 @@ export const DetailsSearchFilter = memo((props: SearchFilterProps) => {
     const [tonality, setTonality] = useState("any")
     const [maxFullness, setMaxFullness] = useState(false)
     const [inBusinessNews, setInBusinessNews] = useState(false)
+    const [onlyMainRole, setOnlyMainRole] = useState(false)
 
 
     useEffect(()=>{
@@ -50,6 +51,7 @@ export const DetailsSearchFilter = memo((props: SearchFilterProps) => {
         tonality: tonality,
         maxFullness: maxFullness,
         inBusinessNews:inBusinessNews,
+        onlyMainRole:onlyMainRole,
 }
         const searchHistograms: Patch = {
         patch: '/objectsearch/histograms',
@@ -60,6 +62,7 @@ export const DetailsSearchFilter = memo((props: SearchFilterProps) => {
         tonality: tonality,
         maxFullness: maxFullness,
         inBusinessNews:inBusinessNews,
+        onlyMainRole:onlyMainRole,
 }
 
         await objectSearch(searchObjectsearch)
@@ -118,7 +121,7 @@ useEffect(()=>{
                     Упоминания в бизнес-контексте
                 </div>
                 <div className={cls.UnitCheckbox}>
-                    <Input className={cls.InputCheckbox} type={"checkbox"}/>
+                    <Input className={cls.InputCheckbox} onChange={(event)=> setOnlyMainRole(event.target.checked)} type={"checkbox"}/>
                     Главная роль в публикации
                 </div>
                 <div className={cls.UnitCheckbox}>
