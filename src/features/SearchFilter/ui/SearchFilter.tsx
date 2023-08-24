@@ -7,6 +7,7 @@ import {Button} from "../../../shared/ui/Button/Button"
 import {useAppDispatch} from "../../../shared/lib/hook/ReduxHooks/redux";
 import {postApi} from "../../../app/providers/services/RtkService";
 import {Patch} from "../../../app/providers/StoreProvider/models/Patch";
+import {useNavigate} from "react-router-dom";
 
 interface SearchFilterProps {
     className?: string
@@ -28,6 +29,7 @@ export const DetailsSearchFilter = memo((props: SearchFilterProps) => {
     const [excludeTechNews, setExcludeTechNews] = useState(false)
     const [excludeAnnouncements, setExcludeAnnouncements] = useState(false)
     const [excludeDigests, setExcludeDigests] = useState(false)
+    const navigate = useNavigate();
 
 
     useEffect(()=>{
@@ -41,7 +43,7 @@ export const DetailsSearchFilter = memo((props: SearchFilterProps) => {
 
     const dispach = useAppDispatch()
     const [objectSearch,{data,isLoading,error}] =postApi.useObjectSearchMutation()
-    // const [documents,{data,isLoading,error}] = postApi.useDocumentsMutation()
+    const [documents,{data:documetData,isLoading:documetIsLoading,error:documetError}] = postApi.useDocumentsMutation()
 
     const handleSearch = async (event: { preventDefault: () => void; }) => {
         event.preventDefault();
@@ -79,6 +81,7 @@ export const DetailsSearchFilter = memo((props: SearchFilterProps) => {
 
         await objectSearch(searchObjectsearch)
         await objectSearch(searchHistograms)
+        await documents({})
 
 
 
@@ -89,7 +92,15 @@ useEffect(()=>{
         console.log(`search data${JSON.stringify(JSON.stringify(data))}`)
         console.log(`search isLoading${JSON.stringify(isLoading)}`)
         console.log(`search error${JSON.stringify(error)}`)
-},[isLoading])
+
+        console.log(`documents data${JSON.stringify(JSON.stringify(documetData))}`)
+        console.log(`documents isLoading${JSON.stringify(documetIsLoading)}`)
+        console.log(`documents error${JSON.stringify(documetError)}`)
+
+    if(data){
+        // navigate("/result");
+    }
+},[isLoading,documetIsLoading])
 
     const {
         className,
